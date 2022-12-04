@@ -25,12 +25,8 @@ function findGroupBadge(elf1, elf2, elf3) {
 
 function* elfUniqueGroupDataGenerator(ruckSacks) {
     while (ruckSacks.length > 0) {
-        // no list comprehension in js :(
         // Set is used to remove duplicates
-        const elf1 = new Set(ruckSacks.shift());
-        const elf2 = new Set(ruckSacks.shift());
-        const elf3 = new Set(ruckSacks.shift());
-        yield [elf1, elf2, elf3];
+        yield Array.from({ length: 3 }, () => new Set(ruckSacks.shift()));
     }
 }
 
